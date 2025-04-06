@@ -34,7 +34,7 @@ public class BetPool : Singleton<BetPool>
         betHistory.Clear();
         activeBets.Clear();
 
-        SceneRoulette.Instance.UpdateUIInteractable(false);
+        RouletteSceneManager.Instance.UpdateUIInteractable(false);
         ResultManager.Instance.totalBet = 0;
     }
 
@@ -48,7 +48,7 @@ public class BetPool : Singleton<BetPool>
         if (lastBet.betSpace.GetValue() <= 0f)
             activeBets.Remove(lastBet.betSpace);
 
-        SceneRoulette.Instance.UpdateUIInteractable(betHistory.Count > 0);
+        RouletteSceneManager.Instance.UpdateUIInteractable(betHistory.Count > 0);
     }
     public void RebetRoutine()
     {
@@ -65,7 +65,7 @@ public class BetPool : Singleton<BetPool>
             yield return null;
         }
 
-        SceneRoulette.Instance.UpdateUIInteractable(true);
+        RouletteSceneManager.Instance.UpdateUIInteractable(true);
     }
 
 

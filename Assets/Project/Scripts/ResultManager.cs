@@ -28,7 +28,7 @@ public class ResultManager : Singleton<ResultManager>
         winSequience.ShowResult(result, totalWin);
 
         totalBet = 0;
-        SceneRoulette.Instance.UpdateLocalPlayerText();
+        RouletteSceneManager.Instance.UpdateLocalPlayerText();
 
         ChipManager.Instance.EnableChips(true);
     }

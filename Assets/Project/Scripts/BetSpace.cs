@@ -117,9 +117,9 @@ public class BetSpace : MonoBehaviour
 
             BetPool.Instance.AddBet(this, selectedValue);
 
-            SceneRoulette.Instance.UpdateUIInteractable(true);
-            SceneRoulette.Instance.UpdateRebetButtonActive(false);
-            SceneRoulette.Instance.UpdateLocalPlayerText();
+            RouletteSceneManager.Instance.UpdateUIInteractable(true);
+            RouletteSceneManager.Instance.UpdateRebetButtonActive(false);
+            RouletteSceneManager.Instance.UpdateLocalPlayerText();
         }
     }
 
@@ -129,7 +129,7 @@ public class BetSpace : MonoBehaviour
         ResultManager.Instance.totalBet -= value;
         stack.Remove(value);
         lastBet = stack.GetValue();
-        SceneRoulette.Instance.UpdateLocalPlayerText();
+        RouletteSceneManager.Instance.UpdateLocalPlayerText();
     }
 
     public float ResolveBet(int result)
@@ -190,9 +190,9 @@ public class BetSpace : MonoBehaviour
 
             BetPool.Instance.AddBet(this, lastBet);
 
-            SceneRoulette.Instance.UpdateUIInteractable(true);
-            SceneRoulette.Instance.UpdateRebetButtonActive(false);
-            SceneRoulette.Instance.UpdateLocalPlayerText();
+            RouletteSceneManager.Instance.UpdateUIInteractable(true);
+            RouletteSceneManager.Instance.UpdateRebetButtonActive(false);
+            RouletteSceneManager.Instance.UpdateLocalPlayerText();
         }
         else
             lastBet = 0;
@@ -206,7 +206,7 @@ public class BetSpace : MonoBehaviour
         lastBet = 0;
 
         stack.Clear();
-        SceneRoulette.Instance.UpdateLocalPlayerText();
+        RouletteSceneManager.Instance.UpdateLocalPlayerText();
     }
 
     public static void EnableBets(bool enable)
