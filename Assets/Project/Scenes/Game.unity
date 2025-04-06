@@ -3857,8 +3857,8 @@ MonoBehaviour:
   resultText: {fileID: 458417994}
   clearButton: {fileID: 1258032228}
   undoButton: {fileID: 1148223447}
-  rebetButton: {fileID: 1296045513}
-  rollButton: {fileID: 1686115515}
+  rebetButton: {fileID: 1686115515}
+  rollButton: {fileID: 1296045513}
 --- !u!4 &1175509798
 Transform:
   m_ObjectHideFlags: 0
