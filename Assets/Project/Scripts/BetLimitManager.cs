@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BetLimitManager : Singleton<BetLimitManager>
 {
+    [SerializeField] private TestData testData;
     [SerializeField] private float max = 1000f;
     [SerializeField] private float min = 1f;
 
@@ -12,13 +13,17 @@ public class BetLimitManager : Singleton<BetLimitManager>
 
     private void Start()
     {
+        if (testData.IsTest)
+        {
+            SetBetLimits(testData.MinBet, testData.MaxBet);
+        }
         UpdateText();
     }
 
     public void UpdateText()
     {
         minT.text = $" Min: {min.ToString("0.0")}";
-        maxT.text = $" Min: {max.ToString("0.0")}";
+        maxT.text = $" Max: {max.ToString("0.0")}";
     }
 
     public void SetBetLimits(float minBet, float maxBet)

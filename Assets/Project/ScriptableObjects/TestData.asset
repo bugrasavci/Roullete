@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isTest: 0
   winNumber: 0
+  maxBet: 2000
+  minBet: 1

@@ -3142,9 +3142,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: ResetBalance
+      - m_Target: {fileID: 281973229}
+        m_TargetAssemblyTypeName: BalanceManager, Assembly-CSharp
+        m_MethodName: ChangeBalance
         m_Mode: 4
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3551,6 +3551,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17486ef1afb775b44a62913115ce3f4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  testData: {fileID: 11400000, guid: e388a98d82edee04482a9dc5dc7b1fd9, type: 2}
   max: 1000
   min: 1
   minT: {fileID: 2002671270}
