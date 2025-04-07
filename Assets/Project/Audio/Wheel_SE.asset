@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2b08f5d73ac64d4a85f0a3f6332a298, type: 3}
   m_Name: Wheel_SE
   m_EditorClassIdentifier: 
-  clip: {fileID: 8300000, guid: 9e51c7d712b93f14fbea673ec8439475, type: 3}
+  clip: {fileID: 8300000, guid: fea0d0004067aac49808f12d80d177b7, type: 3}
   mixerGroup: {fileID: 0}
   volume: 1
   pitch: 1

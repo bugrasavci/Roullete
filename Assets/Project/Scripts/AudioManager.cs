@@ -16,7 +16,7 @@ public class AudioManager : Singleton<AudioManager>
     private AudioSource auxiliarAS;
 
     private float soundVolume = 1;
-    private float musicVolume = 1;
+    private float musicVolume = 0.4f;
 
     protected override void Awake()
     {

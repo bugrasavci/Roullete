@@ -12,6 +12,7 @@ public class WinSequence : MonoBehaviour
     [Header("UI")]
     [SerializeField] private GameObject winPanel;
     [SerializeField] private TMP_Text winText;
+    [SerializeField] private GameObject losePanel;
     [SerializeField] private TMP_Text resultText;
     [SerializeField] private GameObject historyPrefab;
     [SerializeField] private Transform historyContent;
@@ -35,7 +36,14 @@ public class WinSequence : MonoBehaviour
         bool isRed = redNumbers.Contains((byte)result);
 
         if (isWin)
+        {
+
             ShowWin(totalWin);
+        }
+        else
+        {
+            ShowLose();
+        }
 
         UpdateResultText(displayResult, result, isRed);
         AddToHistory(displayResult, isRed);
@@ -53,6 +61,11 @@ public class WinSequence : MonoBehaviour
         winPanel.SetActive(true);
         winText.text = $"WIN <sprite=0> {amount:F2}";
         AudioManager.Instance.PlaySound(0);
+    }
+    private void ShowLose()
+    {
+        losePanel.SetActive(true);
+        AudioManager.Instance.PlaySound(4);
     }
 
     private void UpdateResultText(string text, int result, bool isRed)
@@ -79,7 +92,7 @@ public class WinSequence : MonoBehaviour
         {
             textComponent = historyObj.transform.GetChild(0).GetComponent<TMP_Text>();
             textComponent.text = resultText;
-            textComponent.color = (resultText == "0" || resultText == "00") ? Color.green : Color.white;
+            textComponent.color = (resultText == "0" || resultText == "00") ? Color.green : Color.black;
         }
 
         if (historyContent.childCount > MAX_HISTORY)
@@ -94,6 +107,7 @@ public class WinSequence : MonoBehaviour
         RouletteSceneManager.Instance.GameStarted = false;
         RouletteSceneManager.Instance.UpdateRebetButtonActive(true);
         winPanel.SetActive(false);
+        losePanel.SetActive(false);
     }
 }
 

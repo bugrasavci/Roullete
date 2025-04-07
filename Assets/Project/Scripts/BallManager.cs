@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class BallManager : MonoBehaviour {
-    
+public class BallManager : MonoBehaviour
+{
+
     public bool spinning = false;
     public Rigidbody ball;
     public Transform resultPoint;
@@ -27,7 +28,8 @@ public class BallManager : MonoBehaviour {
 
     private int res = -1;
 
-    void Start () {
+    void Start()
+    {
         ball.isKinematic = true;
     }
 
@@ -42,7 +44,7 @@ public class BallManager : MonoBehaviour {
         spinning = true;
         trigger_animateBall = true;
     }
-    
+
     public void FindNumber(int result, bool isEuropean)
     {
         result = result == -1 && !isEuropean ? 37 : result;
@@ -59,7 +61,7 @@ public class BallManager : MonoBehaviour {
             elapsed += Time.deltaTime;
             yield return null;
         }
-        angularSpeed = targetSpeed;  // Ensure we set to target speed at the end
+        angularSpeed = targetSpeed;
         stopping = true;
     }
 
@@ -76,11 +78,10 @@ public class BallManager : MonoBehaviour {
     private IEnumerator MoveToResultPosition()
     {
         Vector3 startPosition = ball.transform.localPosition;
-        Vector3 endPosition = Vector3.zero; // Hedef pozisyon
+        Vector3 endPosition = Vector3.zero;
         float timeElapsed = 0f;
-        float moveDuration = ballTimeSpeed; // Topun geçiş süresi
+        float moveDuration = ballTimeSpeed;
 
-        // Yavaşça hedef pozisyona doğru hareket ediyoruz
         while (timeElapsed < moveDuration)
         {
             float lerpValue = timeElapsed / moveDuration;
@@ -90,33 +91,30 @@ public class BallManager : MonoBehaviour {
             yield return null;
         }
 
-        // Hedef pozisyona ulaşınca topun pozisyonunu kesin olarak sıfırlıyoruz
         ball.transform.localPosition = endPosition;
-
-        // Zıplama animasyonunu başlatıyoruz
         StartCoroutine(JumpAnimaiton());
     }
     private IEnumerator JumpAnimaiton()
     {
         Vector3 startPosition = ball.transform.localPosition;
-        Vector3 endPosition = Vector3.zero; 
+        Vector3 endPosition = Vector3.zero;
         float timeElapsed = 0f;
-        float jumpHeight = 0.04f; 
-        int jumpCount = 5; 
+        float jumpHeight = 0.04f;
+        int jumpCount = 5;
         float jumpDuration = ballTimeSpeed / jumpCount;
 
         while (timeElapsed < jumpDuration)
         {
-           float lerpValue = timeElapsed / jumpDuration;
-            float height = Mathf.Sin(lerpValue * Mathf.PI) * jumpHeight; // Zıplama yüksekliğini sinüs fonksiyonu ile animasyonel hale getiriyoruz
+            float lerpValue = timeElapsed / jumpDuration;
+            float height = Mathf.Sin(lerpValue * Mathf.PI) * jumpHeight;
 
-           ball.transform.localPosition = Vector3.Lerp(startPosition, endPosition, lerpValue) + Vector3.up * height;
+            ball.transform.localPosition = Vector3.Lerp(startPosition, endPosition, lerpValue) + Vector3.up * height;
 
             timeElapsed += Time.deltaTime;
             yield return null;
         }
 
-       ball.transform.localPosition = endPosition;
+        ball.transform.localPosition = endPosition;
 
         bouncing = false;
     }
@@ -125,8 +123,8 @@ public class BallManager : MonoBehaviour {
     {
         while (bouncing)
         {
-            yield return new WaitForSeconds(.3f);
             AudioManager.Instance.PlaySound(1);
+            yield return new WaitForSeconds(.7f);
         }
     }
 
@@ -156,7 +154,7 @@ public class BallManager : MonoBehaviour {
             float angleRatio = CalculateAngleRatio(angularCross);
             if (deltaAngularCross.y > 0f)
             {
-                if(angle < 35 && angle > 0)
+                if (angle < 35 && angle > 0)
                     angularSpeed = angleRatio * 2f;
 
                 if (angleRatio <= 0.2f && trigger_animateBall && angle > 5)
@@ -172,7 +170,7 @@ public class BallManager : MonoBehaviour {
                     stopping = false;
                     ResultManager.Instance.SetResult(res);
                 }
-            }       
+            }
         }
     }
 }
