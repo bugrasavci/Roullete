@@ -1,4 +1,5 @@
-﻿using Assets.Project.Scripts;
+﻿using System;
+using Assets.Project.Scripts;
 using Assets.Project.Scripts.GameEvents;
 using TMPro;
 using UnityEngine;
@@ -15,6 +16,7 @@ public class RouletteSceneManager : Singleton<RouletteSceneManager>
 
     [Header("State")]
     public bool GameStarted = false;
+    public bool IsPopupOpen = false;
     
     [Header("Text UI")]
     [SerializeField] private TMP_Text textBalance;
@@ -28,6 +30,9 @@ public class RouletteSceneManager : Singleton<RouletteSceneManager>
     [SerializeField] private Button rollButton;
 
     [SerializeField] BalanceSavedData balanceSavedData;
+    [SerializeField] GameObject SelectWinNumberPanel;
+    [SerializeField] TMP_InputField SelectWinNumberInputField;
+    [SerializeField] TestData testData;
 
 
     public void OnButtonClear()
@@ -53,10 +58,28 @@ public class RouletteSceneManager : Singleton<RouletteSceneManager>
 
     public void OnButtonRoll()
     {
+        testData.IsTest = false;
+        testData.WinNumber = -1;
+        SelectWinNumberPanel.SetActive(true);
+        IsPopupOpen = true;
+    }
+    public void OnButtonContinue()
+    {
+        if (!String.IsNullOrWhiteSpace(SelectWinNumberInputField.text))
+        {
+          
+            testData.IsTest = true;
+            testData.WinNumber = int.Parse(SelectWinNumberInputField.text);
+        }
+        SelectWinNumberPanel.SetActive(false);
+        IsPopupOpen = false;
+        SelectWinNumberInputField.text = "";
         UpdateUIInteractable(false);
         resultText.text = "";
         SpinRoulette();
     }
+
+
 
     private void SpinRoulette()
     {

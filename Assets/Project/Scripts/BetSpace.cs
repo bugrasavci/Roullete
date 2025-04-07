@@ -65,6 +65,7 @@ public class BetSpace : MonoBehaviour
 
     private void OnMouseEnter()
     {
+        if (RouletteSceneManager.Instance.IsPopupOpen) return;
         ToolTipManager.Instance.SelectTarget(stack);
 
         if (BetsEnabled)
@@ -95,6 +96,7 @@ public class BetSpace : MonoBehaviour
 
     private void OnMouseUp()
     {
+        if (RouletteSceneManager.Instance.IsPopupOpen) return;
         float selectedValue = ChipManager.Instance.GetSelectedValue();
         ApplyBet(selectedValue);
         ToolTipManager.Instance.SelectTarget(stack);

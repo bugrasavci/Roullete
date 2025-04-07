@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using Assets.Project.Scripts;
-using UnityEngine;
 
 public class BetPool : Singleton<BetPool>
 {
