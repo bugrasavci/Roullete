@@ -27,6 +27,8 @@ public class RouletteSceneManager : Singleton<RouletteSceneManager>
     [SerializeField] private Button rebetButton;
     [SerializeField] private Button rollButton;
 
+    [SerializeField] BalanceSavedData balanceSavedData;
+
 
     public void OnButtonClear()
     {
@@ -75,7 +77,7 @@ public class RouletteSceneManager : Singleton<RouletteSceneManager>
     public void UpdateLocalPlayerText()
     {
         textBet.text = $"Bet: <sprite=0> {ResultManager.Instance.totalBet.ToString("F2")}";
-        textBalance.text = $"<sprite=0> {BalanceManager.Instance.Balance.ToString("F2")}";
+        textBalance.text = $"<sprite=0> {balanceSavedData.Balance.ToString("F2")}";
     }
 
     public void UpdateUIInteractable(bool state)

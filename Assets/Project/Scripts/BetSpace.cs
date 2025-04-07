@@ -105,7 +105,7 @@ public class BetSpace : MonoBehaviour
         if (!BetLimitManager.Instance.AllowLimit(selectedValue))
             return;
 
-        if (BetsEnabled && selectedValue > 0 && BalanceManager.Instance.Balance - selectedValue >= 0)
+        if (BetsEnabled && selectedValue > 0 && BalanceManager.Instance.GetBalence - selectedValue >= 0)
         {
             AudioManager.Instance.PlaySound(3);
 
@@ -181,7 +181,7 @@ public class BetSpace : MonoBehaviour
             return;
         }
 
-        if (BetsEnabled && BalanceManager.Instance.Balance - lastBet >= 0)
+        if (BetsEnabled && BalanceManager.Instance.GetBalence - lastBet >= 0)
         {
             BalanceManager.Instance.ChangeBalance(-lastBet);
             ResultManager.Instance.totalBet += lastBet;

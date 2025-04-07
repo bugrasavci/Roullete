@@ -3,28 +3,18 @@ using UnityEngine;
 
 public class BalanceManager : Singleton<BalanceManager>
 {
-    public float Balance { get; private set; } = 0;
-    [SerializeField] float StartValue;
+    [SerializeField] BalanceSavedData balanceSavedData;
 
+    public float GetBalence => balanceSavedData.Balance;
     private void Start()
     {
-        SetBalance(StartValue);
-    }
-    public void SetBalance(float balance)
-    {
-        Balance = balance;
         NotifyBalanceChanged();
-    }
+    }  
 
     public void ChangeBalance(float value)
     {
-        Balance += value;
+        balanceSavedData.Balance += value;
         NotifyBalanceChanged();
-    }
-
-    public void ResetBalance()
-    {
-        SetBalance(StartValue);
     }
 
     private void NotifyBalanceChanged()
