@@ -3000,6 +3000,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   savedObjects:
   - {fileID: 11400000, guid: 7b36c3f187280a040a8204b1184907fb, type: 2}
+  - {fileID: 11400000, guid: 3ab1ece38bf433c43a7cc430975f1948, type: 2}
 --- !u!1 &849572036
 GameObject:
   m_ObjectHideFlags: 0
@@ -6626,6 +6627,7 @@ MonoBehaviour:
   AudioSourceBGM: {fileID: 2108930324}
   soundToggle: {fileID: 2066547326}
   musicToggle: {fileID: 988566602}
+  settingsSavedData: {fileID: 11400000, guid: 3ab1ece38bf433c43a7cc430975f1948, type: 2}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

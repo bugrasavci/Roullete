@@ -12,11 +12,11 @@ public class AudioManager : Singleton<AudioManager>
     [SerializeField] private Toggle soundToggle;
     [SerializeField] private Toggle musicToggle;
 
+    [SerializeField] private SettingsSavedData settingsSavedData;
+
     private List<AudioSource> audioSourcePool;
     private AudioSource auxiliarAS;
-
-    private float soundVolume = 1;
-    private float musicVolume = 0.4f;
+  
 
     protected override void Awake()
     {
@@ -28,19 +28,21 @@ public class AudioManager : Singleton<AudioManager>
     {
         musicToggle.onValueChanged.AddListener(ToggleMusic);
         soundToggle.onValueChanged.AddListener(ToggleSound);
+        musicToggle.isOn = !settingsSavedData.MusicVolume;
+        soundToggle.isOn = !settingsSavedData.SoundVolume;
     }
 
     public void ToggleSound(bool value)
     {
-        soundVolume = value ? 0 : 1;
+        settingsSavedData.SoundVolume = value ? false : true;
         if (auxiliarAS)
-            auxiliarAS.volume = soundVolume;
+            auxiliarAS.volume = settingsSavedData.SoundVolume ? 1f : 0f;
     }
     public void ToggleMusic(bool value)
     {
-        musicVolume = value ? 0 : 1;
+        settingsSavedData.MusicVolume = value ? false : true;
         if (AudioSourceBGM)
-            AudioSourceBGM.volume = musicVolume;
+            AudioSourceBGM.volume = settingsSavedData.MusicVolume ? 1f : 0f;
     }
 
     public void AllocateAudioSources()
@@ -68,7 +70,7 @@ public class AudioManager : Singleton<AudioManager>
         var source = GetAvailableAudioSource();
         if (iType == 2)
             auxiliarAS = source;
-        audioEvent[iType].PlayIn(source, soundVolume);
+        audioEvent[iType].PlayIn(source, settingsSavedData.SoundVolume ? 1f : 0f);
     }
 
     public void StopAuxiliarSound()
