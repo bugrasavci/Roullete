@@ -9,6 +9,9 @@ public class WinSequence : MonoBehaviour
     [Header("Camera")]
     [SerializeField] private GameEvent OnCameraGoToOrigin;
 
+    [Header("Saved Data")]
+    [SerializeField] private HistoricalRecordSavedData historicalRecordSavedData;
+
     [Header("UI")]
     [SerializeField] private GameObject winPanel;
     [SerializeField] private TMP_Text winText;
@@ -30,6 +33,8 @@ public class WinSequence : MonoBehaviour
     {
         BetPool.Instance.ResetStatus();
         OnCameraGoToOrigin.Invoke();
+        historicalRecordSavedData.TotalSpin++;
+
 
         string displayResult = GetResultString(result);
         bool isWin = totalWin > 0 && ResultManager.Instance.totalBet > 0;
@@ -37,11 +42,12 @@ public class WinSequence : MonoBehaviour
 
         if (isWin)
         {
-
+            historicalRecordSavedData.TotalWinnings += (int)(totalWin - ResultManager.Instance.totalBet);
             ShowWin(totalWin);
         }
         else
         {
+            historicalRecordSavedData.TotalLosses += (int)ResultManager.Instance.totalBet;         
             ShowLose();
         }
 

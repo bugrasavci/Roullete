@@ -30,6 +30,4 @@ public class SettingsSavedObjectData
 {
     public bool soundVolume;
     public bool musicVolume;
-
-
 }
