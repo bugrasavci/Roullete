@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfde70c929291eb458097e205e26ee7b, type: 3}
+  m_Name: HistoricalRecordSavedData
+  m_EditorClassIdentifier: 
+  defaultValues:
+    data:
+      totalSpin: 0
+      totalWinnings: 0
+      totalLosses: 0
+  onChangeHistoricalRecord: {fileID: 11400000, guid: a3ca355f2ca2bde4391b2bdfff09856a,
+    type: 2}
